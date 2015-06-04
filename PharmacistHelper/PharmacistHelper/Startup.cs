@@ -1,7 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using PharmacistHelper;
 
-[assembly: OwinStartupAttribute(typeof(PharmacistHelper.Startup))]
+[assembly: OwinStartup(typeof (Startup))]
+
 namespace PharmacistHelper
 {
     public partial class Startup

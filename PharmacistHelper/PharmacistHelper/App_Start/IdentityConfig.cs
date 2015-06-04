@@ -16,7 +16,8 @@ namespace PharmacistHelper
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
+            IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configurare la logica di convalida per i nomi utente
@@ -32,7 +33,7 @@ namespace PharmacistHelper
                 RequireNonLetterOrDigit = true,
                 RequireDigit = true,
                 RequireLowercase = true,
-                RequireUppercase = true,
+                RequireUppercase = true
             };
             // Registrare i provider di autenticazione a due fattori. Questa applicazione utilizza il telefono e gli indirizzi di posta elettronica come metodi per la ricezione di un codice per la verifica dell'utente
             // Scrivere qui il provider e il plug-in.
@@ -50,7 +51,8 @@ namespace PharmacistHelper
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider =
+                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }

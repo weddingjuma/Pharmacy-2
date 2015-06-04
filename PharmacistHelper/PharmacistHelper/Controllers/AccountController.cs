@@ -1,5 +1,4 @@
-﻿
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -27,7 +26,6 @@ namespace PharmacistHelper.Controllers
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
-
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -76,7 +74,7 @@ namespace PharmacistHelper.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email };
+                var user = new ApplicationUser {UserName = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -97,7 +95,7 @@ namespace PharmacistHelper.Controllers
         public async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
         {
             ManageMessageId? message = null;
-            IdentityResult result =
+            var result =
                 await
                     UserManager.RemoveLoginAsync(User.Identity.GetUserId(),
                         new UserLoginInfo(loginProvider, providerKey));
@@ -109,7 +107,7 @@ namespace PharmacistHelper.Controllers
             {
                 message = ManageMessageId.Error;
             }
-            return RedirectToAction("Manage", new { Message = message });
+            return RedirectToAction("Manage", new {Message = message});
         }
 
         //
@@ -137,20 +135,20 @@ namespace PharmacistHelper.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Manage(ManageUserViewModel model)
         {
-            bool hasPassword = HasPassword();
+            var hasPassword = HasPassword();
             ViewBag.HasLocalPassword = hasPassword;
             ViewBag.ReturnUrl = Url.Action("Manage");
             if (hasPassword)
             {
                 if (ModelState.IsValid)
                 {
-                    IdentityResult result =
+                    var result =
                         await
                             UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                                 model.NewPassword);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+                        return RedirectToAction("Manage", new {Message = ManageMessageId.ChangePasswordSuccess});
                     }
                     AddErrors(result);
                 }
@@ -158,7 +156,7 @@ namespace PharmacistHelper.Controllers
             else
             {
                 // User does not have a password so remove any validation errors caused by a missing OldPassword field
-                ModelState state = ModelState["OldPassword"];
+                var state = ModelState["OldPassword"];
                 if (state != null)
                 {
                     state.Errors.Clear();
@@ -166,11 +164,11 @@ namespace PharmacistHelper.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    IdentityResult result =
+                    var result =
                         await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
+                        return RedirectToAction("Manage", new {Message = ManageMessageId.SetPasswordSuccess});
                     }
                     AddErrors(result);
                 }
@@ -189,7 +187,7 @@ namespace PharmacistHelper.Controllers
         {
             // Request a redirect to the external login provider
             return new ChallengeResult(provider,
-                Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+                Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl}));
         }
 
         //
@@ -214,7 +212,7 @@ namespace PharmacistHelper.Controllers
             ViewBag.ReturnUrl = returnUrl;
             ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
             return View("ExternalLoginConfirmation",
-                new ExternalLoginConfirmationViewModel { Email = loginInfo.DefaultUserName });
+                new ExternalLoginConfirmationViewModel {Email = loginInfo.DefaultUserName});
         }
 
         //
@@ -234,14 +232,14 @@ namespace PharmacistHelper.Controllers
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
             if (loginInfo == null)
             {
-                return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
+                return RedirectToAction("Manage", new {Message = ManageMessageId.Error});
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             if (result.Succeeded)
             {
                 return RedirectToAction("Manage");
             }
-            return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
+            return RedirectToAction("Manage", new {Message = ManageMessageId.Error});
         }
 
         //
@@ -265,7 +263,7 @@ namespace PharmacistHelper.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email };
+                var user = new ApplicationUser {UserName = model.Email};
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -341,7 +339,7 @@ namespace PharmacistHelper.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, identity);
+            AuthenticationManager.SignIn(new AuthenticationProperties {IsPersistent = isPersistent}, identity);
         }
 
         private void AddErrors(IdentityResult result)
@@ -391,7 +389,7 @@ namespace PharmacistHelper.Controllers
 
             public override void ExecuteResult(ControllerContext context)
             {
-                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
+                var properties = new AuthenticationProperties {RedirectUri = RedirectUri};
                 if (UserId != null)
                 {
                     properties.Dictionary[XsrfKey] = UserId;

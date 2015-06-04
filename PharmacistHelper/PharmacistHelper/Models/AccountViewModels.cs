@@ -24,7 +24,8 @@ namespace PharmacistHelper.Models
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "La lunghezza di {0} deve essere di almeno {2} caratteri.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "La lunghezza di {0} deve essere di almeno {2} caratteri.", MinimumLength = 6)
+        ]
         [DataType(DataType.Password)]
         [Display(Name = "Nuova password")]
         public string NewPassword { get; set; }
@@ -59,7 +60,8 @@ namespace PharmacistHelper.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "La lunghezza di {0} deve essere di almeno {2} caratteri.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "La lunghezza di {0} deve essere di almeno {2} caratteri.", MinimumLength = 6)
+        ]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -78,7 +80,8 @@ namespace PharmacistHelper.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "La lunghezza di {0} deve essere di almeno {2} caratteri.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "La lunghezza di {0} deve essere di almeno {2} caratteri.", MinimumLength = 6)
+        ]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

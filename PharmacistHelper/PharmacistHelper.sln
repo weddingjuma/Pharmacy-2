@@ -5,6 +5,15 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmacistHelper", "PharmacistHelper\PharmacistHelper.csproj", "{13808A0D-E69B-4C18-B3BE-5937F78770A8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{80ABC3E5-8853-42B9-B066-BD2CE5610869}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmacyLogic", "PharmacyLogic\PharmacyLogic.csproj", "{564A02A2-2B59-48AF-9F8F-38CAEA275DA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +24,10 @@ Global
 		{13808A0D-E69B-4C18-B3BE-5937F78770A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13808A0D-E69B-4C18-B3BE-5937F78770A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13808A0D-E69B-4C18-B3BE-5937F78770A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{564A02A2-2B59-48AF-9F8F-38CAEA275DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{564A02A2-2B59-48AF-9F8F-38CAEA275DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{564A02A2-2B59-48AF-9F8F-38CAEA275DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{564A02A2-2B59-48AF-9F8F-38CAEA275DA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

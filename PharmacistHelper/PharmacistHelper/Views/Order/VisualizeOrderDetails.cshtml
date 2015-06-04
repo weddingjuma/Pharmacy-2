@@ -6,9 +6,8 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("VisualizeOrderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("VisualizeOrderDetails", "Order", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
 {
-
     <h4>Patient: @Model.PatientFiscalCode</h4>
     <h4>Scadenza: @Model.ExpireDate</h4>
     <div>
@@ -25,9 +24,9 @@
             {
                 <span>@m.Item1</span>
                 <span>@m.Item2</span>
-                <br />
+                <br/>
             }
-            </table>
+        </table>
     </div>
     <div class="text-danger" align="center">
         @Html.Raw(ViewBag.Error)

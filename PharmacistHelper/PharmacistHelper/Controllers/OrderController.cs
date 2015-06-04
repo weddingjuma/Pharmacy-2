@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using PharmacistHelper.Models;
@@ -16,26 +15,26 @@ namespace PharmacistHelper.Controllers
             {
                 orders = new List<Order>
                 {
-                    new Order()
+                    new Order
                     {
                         PatientFiscalCode = "TZZVNC5393fhahf",
                         ExpireDate = DateTime.Now,
-                        Medicines = new List<Tuple<string, int>>()
+                        Medicines = new List<Tuple<string, int>>
                         {
                             new Tuple<string, int>("Moment", 5),
-                            new Tuple<string, int>("Benagol",2)
+                            new Tuple<string, int>("Benagol", 2)
                         }
                     },
-                     new Order()
+                    new Order
                     {
                         PatientFiscalCode = "CPRDRLfdhsjfhadfhd",
                         ExpireDate = DateTime.Now,
-                        Medicines = new List<Tuple<string, int>>()
+                        Medicines = new List<Tuple<string, int>>
                         {
                             new Tuple<string, int>("pillolaanticoncezionale", 2),
-                            new Tuple<string, int>("froben",2)
+                            new Tuple<string, int>("froben", 2)
                         }
-                    },
+                    }
                 }
             };
 

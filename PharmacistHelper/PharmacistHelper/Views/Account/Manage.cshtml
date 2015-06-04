@@ -1,5 +1,4 @@
-﻿@using PharmacistHelper.Models;
-@using Microsoft.AspNet.Identity;
+﻿@using PharmacistHelper.Models
 @{
     ViewBag.Title = "Gestione account";
 }
@@ -20,7 +19,7 @@
 
         <section id="externalLogins">
             @Html.Action("RemoveAccountList")
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel {Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl})
         </section>
     </div>
 </div>
