@@ -2,23 +2,41 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
+
 
 namespace PharmacyLogic.Database
 {
-    class Order
+    public class Stock
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual Guid OrderId { get; set; }
+        public virtual Guid StockId { get; set; }
 
-        [MinLength(16), MaxLength(16)]
-        public virtual string PatientFiscalCode { get; set; }
+        [Index("uq_stock_MedicineName", 1, IsUnique = true)]
+        [Required]
+        public virtual string MedicineName { get; set; }
 
-        public virtual DateTime ExpireDate { get; set; }
+        [Required]
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than {0}")]
+        public virtual int Quantity { get; set; }
 
-        public virtual IDictionary<string, int> Medicines { get; set; }
+        [Required]
+        [Range(0, float.MaxValue, ErrorMessage = "Please enter a value bigger than {0}")]
+        public virtual float Price { get; set; }
 
+        [Required]
+        public virtual DateTime NextSupply { get; set; } 
+    }
+
+
+    public class PharmacyContext : DbContext
+    {
+        public DbSet<Stock> Stocks { get; set; }
+
+        public PharmacyContext()
+            : base(@"Server=.\SQLEXPRESS;Initial Catalog=PharmacyDB;Integrated Security=SSPI;MultipleActiveResultSets=True")
+        {
+            
+        }
     }
 }

@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{80ABC3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmacyLogic", "PharmacyLogic\PharmacyLogic.csproj", "{564A02A2-2B59-48AF-9F8F-38CAEA275DA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pharmacy", "Pharmacy\Pharmacy.csproj", "{DE2C27F6-D54D-4A2B-A8B1-BC3183764252}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{564A02A2-2B59-48AF-9F8F-38CAEA275DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{564A02A2-2B59-48AF-9F8F-38CAEA275DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{564A02A2-2B59-48AF-9F8F-38CAEA275DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE2C27F6-D54D-4A2B-A8B1-BC3183764252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE2C27F6-D54D-4A2B-A8B1-BC3183764252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE2C27F6-D54D-4A2B-A8B1-BC3183764252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE2C27F6-D54D-4A2B-A8B1-BC3183764252}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

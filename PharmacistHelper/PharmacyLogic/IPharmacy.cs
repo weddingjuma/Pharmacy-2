@@ -1,37 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using ExternalServices;
+using PrescriptionResourceInterface;
 
 namespace PharmacyLogic
 {
     public interface IPharmacy
     {
-        /// <summary>
-        /// Returns all the orders with expire date after the present day
-        /// </summary>
-        /// <returns></returns>
-        ICollection<OrderDto> GetOrders();
-
-
-        /// <summary>
-        /// Checks if in stocks there is the quantity of the medicine specified 
-        /// </summary>
-        /// <param name="medicine"></param>
-        /// <param name="quantity"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException">Throws if medicine is null</exception>
-        /// <exception cref="ArgumentException">Throws if quantity is less than zero</exception>
-        bool CheckStocks(string medicine, int quantity);
-
-        ISet<MedicineDto> GetGenerics(string activePrinciple); 
-
 
         /// <summary>
         /// Withdraws the quantity of medicine from stocks. If the operation succedes returns true, otherwise returns false.
         /// </summary>
         /// <param name="medicine"></param>
         /// <param name="quantity"></param>
-        /// <exception cref="ArgumentNullException">Throws if medicine is null</exception>
-        /// <exception cref="ArgumentException">Throws if quantity is less than zero</exception>
-        bool WithdrawFromStocks(string medicine, int quantity);
+        /// <exception cref="ArgumentNullException">Throws if medicines is null</exception>
+        /// <exception cref="ArgumentException">Throws if there is a quantity that is less than zero</exception>
+        bool WithdrawFromStocks(IDictionary<MedicineDTO, int> medicines);
+
+        /// <summary>
+        /// Checks if the active principles in the prescriptions have some related medicine and if this medicine are present in the 
+        /// stocks. Returns the map between the prescriptionID and the related medicines.
+        /// </summary>
+        /// <param name="prescriptions"></param>
+        /// <returns></returns>
+        IDictionary<Guid, IEnumerable<MedicineDTO>> GetMedicinesForPrescriptions(
+            IEnumerable<PrescriptionDTO> prescriptions);
+
+
     }
 }

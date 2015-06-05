@@ -38,6 +38,12 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ExternalServices">
+      <HintPath>..\..\..\ResourceServer\ExternalServices\bin\Debug\ExternalServices.dll</HintPath>
+    </Reference>
+    <Reference Include="PrescriptionResourceInterface">
+      <HintPath>..\..\..\ResourceServer\prescriptionresourceinterface\bin\Debug\PrescriptionResourceInterface.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -49,9 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Entities.cs" />
-    <Compile Include="DTOs\MedicineDto.cs" />
     <Compile Include="IPharmacy.cs" />
-    <Compile Include="DTOs\OrderDTO.cs" />
+    <Compile Include="Pharmacy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
