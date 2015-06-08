@@ -40,7 +40,7 @@ namespace Pharmacy.Controllers
             return Json( new JObject {{"returnValue", serialized}});
         }
 
-        private IDictionary<string, Tuple<IList<MedicineDTO>, int>> BuildMedicinesWithQuantity(IDictionary<string, IList<MedicineDTO>> medicines, PrescriptionDTO prescription)
+        private static IDictionary<string, Tuple<IList<MedicineDTO>, int>> BuildMedicinesWithQuantity(IDictionary<string, IList<MedicineDTO>> medicines, PrescriptionDTO prescription)
         {
             var result = new Dictionary<string, Tuple<IList<MedicineDTO>, int>>(); 
             foreach (var principle in medicines.Keys)
@@ -52,7 +52,7 @@ namespace Pharmacy.Controllers
             return result;
         }
 
-        private async Task<JObject> QueryResourceServer(JObject principlesJObject)
+        private static async Task<JObject> QueryResourceServer(JObject principlesJObject)
         {
             using (var client = new HttpClient())
             {
