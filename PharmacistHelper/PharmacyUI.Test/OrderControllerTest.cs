@@ -37,7 +37,7 @@ namespace PharmacyUI.Test
                     ExpireDate = DateTime.Now,
                     PrescriptioId = Guid.NewGuid(),
                     Visibility = true,
-                    Medicines = new Dictionary<string, int>(){{"momentact", 3}}
+                    Medicines = new Dictionary<string, int>(){{"Idrocortisone", 3}}
                 }
             });
 

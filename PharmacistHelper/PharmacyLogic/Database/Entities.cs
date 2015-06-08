@@ -13,6 +13,7 @@ namespace PharmacyLogic.Database
 
         [Index("uq_stock_MedicineName", 1, IsUnique = true)]
         [Required]
+        [MaxLength(200), MinLength(2)]
         public virtual string MedicineName { get; set; }
 
         [Required]
@@ -35,7 +36,18 @@ namespace PharmacyLogic.Database
         public PharmacyContext()
             : base(@"Server=.\SQLEXPRESS;Initial Catalog=PharmacyDB;Integrated Security=SSPI;MultipleActiveResultSets=True")
         {
-            
+            System.Data.Entity.Database.SetInitializer(new PharmacyContextInitializer());
+        }
+    }
+
+    public class PharmacyContextInitializer : IDatabaseInitializer<PharmacyContext>
+    {
+        public void InitializeDatabase(PharmacyContext context)
+        {
+            if (context.Database.Exists())
+                context.Database.Delete();
+
+            context.Database.Create();
         }
     }
 }

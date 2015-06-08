@@ -13,7 +13,7 @@ namespace Pharmacy.Test
         [SetUp]
         public void SetUp()
         {
-            _pharmacy = new PharmacyLogic.Pharmacy();
+            _pharmacy = PharmacyLogic.Pharmacy.GetInstance();
         }
 
         [Test]
@@ -29,7 +29,6 @@ namespace Pharmacy.Test
                     Visibility = true
                 }
             };
-            //_pharmacy.GetMedicinesForPrescriptions();
         }
     }
 }
