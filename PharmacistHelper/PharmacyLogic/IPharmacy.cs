@@ -23,8 +23,8 @@ namespace PharmacyLogic
         /// </summary>
         /// <param name="prescriptions"></param>
         /// <returns></returns>
-        IDictionary<Guid, IEnumerable<MedicineDTO>> GetMedicinesForPrescriptions(
-            IEnumerable<PrescriptionDTO> prescriptions);
+        IDictionary<string, IList<MedicineDTOPharmacy>> GetMedicinesForPrescription(
+            IDictionary<string, Tuple<IList<MedicineDTO>, int>> medicines );
 
 
     }

@@ -12,6 +12,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using Pharmacy.Areas.HelpPage.ModelDescriptions;
 using Pharmacy.Areas.HelpPage.Models;
+using Pharmacy.Areas.HelpPage.SampleGeneration;
 
 namespace Pharmacy.Areas.HelpPage
 {
