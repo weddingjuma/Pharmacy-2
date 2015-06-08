@@ -19,8 +19,8 @@ namespace Pharmacy.Controllers
         public IHttpActionResult PostCheckAvailability(PrescriptionsDTO p)
         {
             var pharmacy = PharmacyLogic.Pharmacy.GetInstance();
-            IDictionary<PrescriptionDTO, IDictionary<string, IList<MedicineDTOPharmacy>>> prescriptionsDictionary =
-                new Dictionary<PrescriptionDTO, IDictionary<string, IList<MedicineDTOPharmacy>>>();
+            IDictionary<Guid, IDictionary<string, IList<MedicineDTOPharmacy>>> prescriptionsDictionary =
+                new Dictionary<Guid, IDictionary<string, IList<MedicineDTOPharmacy>>>();
             foreach (var pres in p.Prescriptions)
             {
                 var principles = pres.Medicines.Keys.ToList();
@@ -34,7 +34,7 @@ namespace Pharmacy.Controllers
 
                 var medicineWithQuantity = BuildMedicinesWithQuantity(medicines, pres);
                 var availableMedicines = pharmacy.GetMedicinesForPrescription(medicineWithQuantity);
-                prescriptionsDictionary.Add(pres, availableMedicines);
+                prescriptionsDictionary.Add(pres.PrescriptioId, availableMedicines);
             }
             var serialized = JsonConvert.SerializeObject(prescriptionsDictionary);
             return Json( new JObject {{"returnValue", serialized}});

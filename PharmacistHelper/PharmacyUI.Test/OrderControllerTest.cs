@@ -21,10 +21,10 @@ namespace PharmacyUI.Test
         public void PostCheckAvailabilityTest()
         {
             // Arrange
-            var controller = new OrdersController();
+            var controller = new OrdersController()
             {
-               // Request = new HttpRequestMessage(),
-               // Configuration = new HttpConfiguration()
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
             };
 
             var prescriptions  = new Mock<PrescriptionsDTO>();
@@ -47,7 +47,8 @@ namespace PharmacyUI.Test
             // Assert
             var result = response.ExecuteAsync(new CancellationToken()).Result.Content.ReadAsStringAsync().Result;
             var JObjectResult = JsonConvert.DeserializeObject<JObject>(result);
-            var result2 = JsonConvert.DeserializeObject<IDictionary<PrescriptionDTO, IDictionary<string, IList<MedicineDTOPharmacy>>>>(JObjectResult["returnValue"].ToString());
+          
+            var result2 = JsonConvert.DeserializeObject<IDictionary<Guid, IDictionary<string, IList<MedicineDTOPharmacy>>>>(JObjectResult["returnValue"].ToString());
         }
     }
 }
