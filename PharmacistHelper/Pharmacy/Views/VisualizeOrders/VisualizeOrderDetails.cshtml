@@ -6,7 +6,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("VisualizeOrderDetails", "Order", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+@using (Html.BeginForm("VisualizeOrderDetails", "VisualizeOrders", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
 {
     <h4>Patient: @Model.PatientFiscalCode</h4>
     <h4>Scadenza: @Model.ExpireDate</h4>
