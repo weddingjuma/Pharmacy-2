@@ -5,6 +5,6 @@ namespace Pharmacy.Models
 {
     public class PrescriptionsDTO
     {
-        public virtual IEnumerable<PrescriptionDTO> Prescriptions { get; set; }
+        public virtual string  Prescriptions { get; set; }
     }
 }

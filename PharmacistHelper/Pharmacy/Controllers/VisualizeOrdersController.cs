@@ -13,13 +13,15 @@ namespace Pharmacy.Controllers
         // GET: Order
         public ActionResult VisualizeOrders()
         {
-            var orders = new OrderModel();
-            orders.orders = new List<Order>()
+            var orders = new OrderModel
             {
-                new Order()
+                orders = new List<Order>()
                 {
-                    ExpireDate = DateTime.Now,
-                    PatientFiscalCode = "bananino"
+                    new Order()
+                    {
+                        ExpireDate = DateTime.Now,
+                        PatientFiscalCode = "bananino"
+                    }
                 }
             };
 
