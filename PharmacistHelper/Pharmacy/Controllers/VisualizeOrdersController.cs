@@ -11,26 +11,27 @@ namespace Pharmacy.Controllers
     public class VisualizeOrdersController: Controller
     {
         // GET: Order
-        public ActionResult VisualizeOrders()
+        public ActionResult VisualizeApprovedOrders()
         {
-            var orders = new OrderModel
-            {
-                orders = new List<Order>()
-                {
-                    new Order()
-                    {
-                        ExpireDate = DateTime.Now,
-                        PatientFiscalCode = "bananino"
-                    }
-                }
-            };
 
-            return View(orders);
+            return View();
         }
 
 
-        public ActionResult VisualizeOrderDetails()
+        public ActionResult VisualizePreparedOrders()
         {
+            return View();
+        }
+
+        public ActionResult VisualizeWithdrewOrders()
+        {
+            return View();
+        }
+
+
+        public ActionResult VisualizeOrderDetails(Guid id)
+        {
+          //  var model=new OrderModel(){Orders = }
             return View();
         }
     }

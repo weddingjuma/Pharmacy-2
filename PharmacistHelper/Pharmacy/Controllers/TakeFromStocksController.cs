@@ -14,7 +14,7 @@ namespace Pharmacy.Controllers
         {
             var requiredMedicines = JsonConvert.DeserializeObject<IEnumerable<RequestForOrderDTO>>(p.Medicines);
             var pharmacy = PharmacyLogic.Pharmacy.GetInstance();
-
+            
             var notavailable = new List<Guid>();
             foreach (var pres in requiredMedicines)
             {
