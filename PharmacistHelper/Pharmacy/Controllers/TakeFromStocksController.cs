@@ -1,30 +1,28 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
-using ExternalServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Pharmacy.Models;
-using PrescriptionResourceInterface;
-
+using PharmacyServices;
 
 namespace Pharmacy.Controllers
 {
     public class TakeFromStocksController : ApiController
     {
-        public IHttpActionResult PostCheckStocks(TakeFromStocksModel p)
+        public IHttpActionResult PostCheckStocks(TakeFromStocksModels p)
         {
-            var requiredMedicines = JsonConvert.DeserializeObject<IDictionary<Guid, IList<Tuple<string, int>>>>(p.Medicines);
+            var requiredMedicines = JsonConvert.DeserializeObject<IEnumerable<RequestForOrderDTO>>(p.Medicines);
             var pharmacy = PharmacyLogic.Pharmacy.GetInstance();
-            
+
+            var notavailable = new List<Guid>();
             foreach (var pres in requiredMedicines)
             {
-                pharmacy.
+                if (!pharmacy.WithdrawFromStocks(pres.Medicines))
+                    notavailable.Add(pres.PrescriptionId);       
             }
-            var serialized = JsonConvert.SerializeObject(prescriptionsDictionary);
-            return Json(new JObject { { "returnValue", serialized } });
+            var serialized = JsonConvert.SerializeObject(notavailable);
+            return Json(new JObject {{"returnValue", serialized}});
         }
     }
 }

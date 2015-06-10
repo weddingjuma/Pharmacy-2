@@ -303,6 +303,10 @@
       <Project>{564a02a2-2b59-48af-9f8f-38caea275da1}</Project>
       <Name>PharmacyLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PharmacyServices\PharmacyServices.csproj">
+      <Project>{09DAC3E5-035A-4E6D-900E-6E0B8773C80F}</Project>
+      <Name>PharmacyServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

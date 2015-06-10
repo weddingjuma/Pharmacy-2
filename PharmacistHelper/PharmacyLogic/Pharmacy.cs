@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ExternalServices;
 using PharmacyLogic.Database;
+using PharmacyServices;
 
 //commento inserito per fare delle modifiche
 namespace PharmacyLogic
@@ -52,9 +53,32 @@ namespace PharmacyLogic
             return _instance;
         }
 
-        public bool WithdrawFromStocks(IDictionary<MedicineDTO, int> medicines)
+
+        public bool WithdrawFromStocks(IList<RequestForOrderDTO.OrderedMedicine> medicines)
         {
-            throw new NotImplementedException();
+            if (!medicines.Any())
+                return true;
+
+            using (var db = new PharmacyContext())
+            {
+                foreach (var med in medicines)
+                {
+                    var stock = db.Stocks.FirstOrDefault(s => s.MedicineName.Equals(med.MedicineName));
+                    if (stock == null)
+                        return false;
+
+                    if (stock.Quantity >= med.Quantity)
+                    {
+                        stock.Quantity -= med.Quantity;
+                        db.SaveChanges();
+                    }
+
+                    else if (!med.KnownIfIsNotAvailable)
+                        return false;
+
+                }
+                return true;
+            }
         }
 
         public IDictionary<string, IList<MedicineDTOPharmacy>> GetMedicinesForPrescription(IDictionary<string, Tuple<IList<MedicineDTO>, int>> medicines)
