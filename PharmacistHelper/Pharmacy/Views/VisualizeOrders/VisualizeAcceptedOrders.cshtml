@@ -1,12 +1,12 @@
 ﻿@model Pharmacy.Models.OrderModel
 
 @{
-    ViewBag.Title = "Visualizza Ordini Withdrew";
+    ViewBag.Title = "Visualizza Ordini Approved";
 }
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("VisualizeWithdrewOrders", "VisualizeOrders", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("VisualizeAcceptedOrders", "VisualizeOrders", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <div>
         <h4>Cod. Fiscale Utente: @Model.Orders.First()  </h4>
@@ -19,11 +19,14 @@
             </tr>
             @foreach (var order in @Model.Orders)
             {
+
                 <tr>
                     <td>@order.UserFiscalCode</td>
+
                     <td>order.ExpirationDateTime</td>
-                    <td>@Html.ActionLink("Dettaglio ordine", "VisualizeOrderDetails",new { id = order.Id})</td>
+                    <td>@Html.ActionLink("Dettaglio ordine", "VisualizeOrderDetails", order.Id)</td>
                 </tr>
+
             }
         </table>
 

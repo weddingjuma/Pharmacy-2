@@ -1,4 +1,4 @@
-﻿@model Pharmacy.Models.OrderModel
+﻿@model Pharmacy.Models.OrderDetailsModel
 
 @{
     ViewBag.Title = "Dettaglio ordine";
@@ -9,33 +9,27 @@
 @using (Html.BeginForm("VisualizeOrderDetails", "VisualizeOrders", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <div>
-        <h4>Cod. Fiscale Utente: @Model.orders.First()  </h4>
+        <h4>Cod. Fiscale Utente: @Model.SelectedOrder. </h4>
+        <h4>Stato: @Model.SelectedOrder.State </h4>
 
         <table>
             <tr>
-                <th>Cod. Fiscale Utente</th>
-                <th>Scadenza Ordine</th>
-                <th></th>
+                <th>Nome</th>
+                <th>Quantità</th>
             </tr>
-            @foreach (var order in @Model.orders)
+            @foreach (var medicina in @Model.SelectedOrder.Medicines)
             {
-
                 <tr>
-                    <td>@order.UserFiscalCode</td>
-
-                    <td>order.ExpirationDateTime</td>
-                    <td> @Html.ActionLink("Dettaglio ordine","VisualizeOrderDetails",order.Id)</td>
+                    <td>@medicina.Name</td>
+                    <td>@medicina.Quantity</td>
                 </tr>
-
             }
         </table>
-     
         <div class="text-danger" align="center">
             @Html.Raw(ViewBag.Error)
         </div>
     </div>
 }
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
