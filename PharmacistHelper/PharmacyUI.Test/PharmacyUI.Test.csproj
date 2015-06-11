@@ -54,7 +54,7 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="PrescriptionResourceInterface">
-      <HintPath>..\Pharmacy\Bin\PrescriptionResourceInterface.dll</HintPath>
+      <HintPath>..\..\..\Server\prescriptionresourceinterface\bin\Debug\PrescriptionResourceInterface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using ExternalServices;
-using PrescriptionResourceInterface;
 
 namespace PharmacyLogic
 {

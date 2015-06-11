@@ -1,12 +1,12 @@
 ﻿@model Pharmacy.Models.OrderModel
 
 @{
-    ViewBag.Title = "Dettaglio ordine";
+    ViewBag.Title = "Visualizza Ordini Approved";
 }
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("VisualizeOrderDetails", "VisualizeOrders", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("VisualizeAcceptedOrders", "VisualizeOrders", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <div>
         <h4>Cod. Fiscale Utente: @Model.orders.First()  </h4>
@@ -24,12 +24,12 @@
                     <td>@order.UserFiscalCode</td>
 
                     <td>order.ExpirationDateTime</td>
-                    <td>@Html.ActionLink("Dettaglio ordine","VisualizeOrderDetails",order.Id)</td>
+                    <td>@Html.ActionLink("Dettaglio ordine", "VisualizeOrderDetails", order.Id)</td>
                 </tr>
 
             }
         </table>
-     
+
         <div class="text-danger" align="center">
             @Html.Raw(ViewBag.Error)
         </div>
