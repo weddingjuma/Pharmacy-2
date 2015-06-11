@@ -9,7 +9,7 @@
 @using (Html.BeginForm("VisualizeWithdrewOrders", "VisualizeOrders", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <div>
-        <h4>Cod. Fiscale Utente: @Model.orders.First()  </h4>
+        <h4>Cod. Fiscale Utente: @Model.Orders.First()  </h4>
 
         <table>
             <tr>
@@ -17,7 +17,7 @@
                 <th>Scadenza Ordine</th>
                 <th></th>
             </tr>
-            @foreach (var order in @Model.orders)
+            @foreach (var order in @Model.Orders)
             {
                 <tr>
                     <td>@order.UserFiscalCode</td>

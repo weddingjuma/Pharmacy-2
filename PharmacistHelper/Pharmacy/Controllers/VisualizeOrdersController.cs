@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace Pharmacy.Controllers
             {
                 var result = task.Result;
                 var orders = DeserializeResult<IEnumerable<OrderDto>>(result);
-                var model = new OrderModel(){orders = orders};
+                var model = new OrderModel(){Orders = orders};
 
                 return View(model);
             }
@@ -63,7 +64,7 @@ namespace Pharmacy.Controllers
             {
                 var result = task.Result;
                 var orders = DeserializeResult<IEnumerable<OrderDto>>(result);
-                var model = new OrderModel() { orders = orders };
+                var model = new OrderModel() { Orders = orders };
 
                 return View(model);
             }
@@ -82,8 +83,8 @@ namespace Pharmacy.Controllers
             {
                 var result = task.Result;
                 var orders = DeserializeResult<IEnumerable<OrderDto>>(result);
-                var model = new OrderModel() { orders = orders };
-
+                var model = new OrderModel() { Orders = orders };
+                TempData["OrderList"] = orders; 
                 return View(model);
             }
             catch (AggregateException e)
@@ -97,13 +98,15 @@ namespace Pharmacy.Controllers
 
         public ActionResult VisualizeOrderDetails(Guid? id)
         {
-            if(id == null)
-                return View();
 
+            var listOrder = TempData["OrderList"] as IEnumerable<OrderDto>;
 
-            
+            if (id == null || listOrder == null)
+                return RedirectToAction("Index", "Home");
 
-            return View();
+            var selectedOrder = listOrder.Single(p => p.Id == id);
+
+            return View(new OrderDetailsModel(){SelectedOrder = selectedOrder});
         }
 
         private async Task<JObject> ConfigurationOauthOperation(string scope)

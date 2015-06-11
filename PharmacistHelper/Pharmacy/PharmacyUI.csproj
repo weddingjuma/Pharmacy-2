@@ -226,6 +226,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\OrderDetailsModel.cs" />
     <Compile Include="Models\OrderModels.cs" />
     <Compile Include="Models\PrescriptionsDTO.cs" />
     <Compile Include="Models\TakeFromStocksModels.cs" />
@@ -317,9 +318,6 @@
       <Project>{564a02a2-2b59-48af-9f8f-38caea275da1}</Project>
       <Name>PharmacyLogic</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

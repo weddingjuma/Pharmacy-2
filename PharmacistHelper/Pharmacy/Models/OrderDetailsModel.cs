@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using PrescriptionResourceInterface;
 
 namespace Pharmacy.Models
 {
-
-    public class OrderModel
+    public class OrderDetailsModel
     {
-        public IEnumerable<OrderDto> Orders { get; set; }
-
+        public OrderDto SelectedOrder { get; set; }
     }
 }
