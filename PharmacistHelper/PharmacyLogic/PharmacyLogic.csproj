@@ -42,10 +42,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="ExternalServices">
-      <HintPath>..\..\..\Server\ExternalServices\bin\Debug\ExternalServices.dll</HintPath>
+      <HintPath>..\..\..\ServerForseFinish\ExternalServices\bin\Debug\ExternalServices.dll</HintPath>
     </Reference>
     <Reference Include="PrescriptionResourceInterface">
-      <HintPath>..\..\..\Server\prescriptionresourceinterface\bin\Debug\PrescriptionResourceInterface.dll</HintPath>
+      <HintPath>..\..\..\ServerForseFinish\prescriptionresourceinterface\bin\Debug\PrescriptionResourceInterface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

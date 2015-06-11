@@ -1,4 +1,16 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
+using System.Web.Http;
+using ExternalServices;
+using Moq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NUnit.Framework;
+using Pharmacy.Controllers;
+using Pharmacy.Models;
+using PrescriptionResourceInterface;
 
 namespace PharmacyUI.Test
 {
@@ -9,11 +21,11 @@ namespace PharmacyUI.Test
         public void PostCheckAvailabilityTest()
         {
             //// Arrange
-            //var controller = new OrdersController()
-            //{
-            //    Request = new HttpRequestMessage(),
-            //    Configuration = new HttpConfiguration()
-            //};
+            var controller = new OrdersController()
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             //var prescriptions  = new Mock<PrescriptionsDTO>();
             //prescriptions.SetupGet(p => p.Prescriptions).Returns(new List<PrescriptionDTO>()
@@ -46,7 +58,7 @@ namespace PharmacyUI.Test
             //// Assert
             //var result = response.ExecuteAsync(new CancellationToken()).Result.Content.ReadAsStringAsync().Result;
             //var JObjectResult = JsonConvert.DeserializeObject<JObject>(result);
-
+            var response = controller.PostCheckAvailability(prescriptions.Object);
             // Assert
             var result = response.ExecuteAsync(new CancellationToken()).Result.Content.ReadAsStringAsync().Result;
             var jObjectResult = JsonConvert.DeserializeObject<JObject>(result);

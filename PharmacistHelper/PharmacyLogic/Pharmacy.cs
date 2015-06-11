@@ -40,6 +40,22 @@ namespace PharmacyLogic
                 stock2.Quantity = 2;
                 db.Stocks.Add(stock2);
 
+                var stock3 = db.Stocks.Create();
+                stock3.Price = 48f;
+                stock3.MedicineName = "Bivis 28 compresse";
+                stock3.NextSupply = new DateTime(2015, 6, 18);
+                stock3.Quantity = 0;
+                db.Stocks.Add(stock3);
+
+                var stock4 = db.Stocks.Create();
+                stock4.Price = 38f;
+                stock4.MedicineName = "Bivis act";
+                stock4.NextSupply = new DateTime(2015, 6, 18);
+                stock4.Quantity = 10;
+                db.Stocks.Add(stock4);
+
+                
+
                 db.SaveChanges();
             }
         }
