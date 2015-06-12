@@ -49,8 +49,8 @@ namespace Pharmacy.Controllers
             WebRequest request = WebRequest.Create("https://dione.disi.unige.it/oauth/v2/oauth/token");
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers["Authorization"] = "Basic " + Convert.ToBase64String(Encoding.Default.GetBytes("SSD_ClientApp_prova:7eee9979f96d797400ed5e6503f81964"));
-            string postData = "grant_type=authorization_code&code=" + code + "&redirect_uri=http://localhost:8000/AuthorizationManagement";
+            request.Headers["Authorization"] = "Basic " + Convert.ToBase64String(Encoding.Default.GetBytes("SSD_PharmacyApp:7e0e9979f96d797400ed5e6503f81964"));
+            string postData = "grant_type=authorization_code&code=" + code + "&redirect_uri=http://localhost:55555/AuthorizationManagement";
             byte[] byteArray = Encoding.UTF8.GetBytes(postData);
             request.ContentLength = byteArray.Length;
             //accetta tutti i certificati, altrimenti solleva eccezione dicendo che trova problemi con sistemi ssl/tsl
@@ -89,7 +89,7 @@ namespace Pharmacy.Controllers
             reader.Close();
             dataStream.Close();
             response.Close();
-            return RedirectToAction(state, "Home");
+            return RedirectToAction("Index", "Home");
         }
         private static JObject Base64DecodeJson(string base64EncodedData)
         {

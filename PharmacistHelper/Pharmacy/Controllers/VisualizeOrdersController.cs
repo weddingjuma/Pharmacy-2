@@ -23,8 +23,8 @@ namespace Pharmacy.Controllers
         public ActionResult Oauth(string name)
         {
             var getData = "https://dione.disi.unige.it/oauth/v2/oauth/authorize?response_type=code";
-            getData += "&client_id=SSD_ClientApp_prova";
-            getData += "&redirect_uri=http://localhost:8000/AuthorizationManagement";
+            getData += "&client_id=SSD_PharmacyApp";
+            getData += "&redirect_uri=http://localhost:55555/AuthorizationManagement";
 
             getData += "&scope=GetMyAcceptedOrders+";
             getData += "GetMyPreparedOrders+";
